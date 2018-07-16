@@ -3,13 +3,23 @@ import Media from '../components/media';
 import { connect } from 'react-redux';
 import  * as actions from '../../actions/index';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 
 class MediaContainer extends Component {
   openModal = (id) => {
     this.props.actions.openModal(id)
   }
   render(){
-    return <Media openModal={this.openModal} {...this.props.data.toJS()} />
+    return (
+      <Link
+        to={{
+          pathname: `/canciones/${this.props.data.get('id')}`,
+          state: { modal: true },
+        }}
+      >
+        <Media openModal={this.openModal} {...this.props.data.toJS()} />
+      </Link>
+    )
   }
 }
 
