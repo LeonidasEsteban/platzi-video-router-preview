@@ -43,14 +43,14 @@ export function searchAsyncEntities(query) {
     // fetch().then(()=>)
     // XHR
     // trae
-    dispatch(isLoading(true))
 
-    setTimeout(()=> {
+    // dispatch(isLoading(true))
+    // setTimeout(()=> {
 
-      dispatch(isLoading(false))
+      // dispatch(isLoading(false))
       dispatch(searchEntities(query))
 
-    }, 5000)
+    // }, 5000)
   }
 
 }

@@ -2,7 +2,8 @@ import React from 'react';
 import Category from './category';
 import './categories.css';
 import Search from '../../widgets/containers/search';
-import Media from '../../playlist/components/media.js';
+// import Media from '../../playlist/components/media.js';
+import MediaContainer from '../../playlist/containers/media.js';
 
 function Categories(props) {
   return (
@@ -14,7 +15,7 @@ function Categories(props) {
       }
       {
         props.search.map((item) => {
-          return <Media openModal={props.handleOpenModal} {...item.toJS()} key={item.get('id')}/>
+          return <MediaContainer openModal={props.handleOpenModal} id={item.get('id')} key={item.get('id')}/>
         })
       }
       {
