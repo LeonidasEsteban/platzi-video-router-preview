@@ -8,7 +8,7 @@ function Modal(props) {
       {props.children}
       <Link
         to={{
-          pathname: '/',
+          pathname: '/videos/',
           state: { modal: false }
         }}
       >

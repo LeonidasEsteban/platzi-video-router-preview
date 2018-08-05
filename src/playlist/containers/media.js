@@ -13,7 +13,7 @@ class MediaContainer extends Component {
     return (
       <Link
         to={{
-          pathname: `/canciones/${this.props.data.get('id')}`,
+          pathname: `/videos/${this.props.data.get('id')}`,
           state: { modal: true },
         }}
       >
