@@ -5,30 +5,25 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = (env) => {
   const plugins = [
-    new ExtractTextPlugin("css/[name].css")
+    new ExtractTextPlugin("css/[name].[hash].css")
   ]
-
-  if (env.NODE_ENV === 'production') {
-    plugins.push(
-      new CleanWebpackPlugin(['dist'], {root: __dirname})
-    )
-  }
 
   return {
 
     entry: {
-      "home": path.resolve(__dirname, 'src/entries/home.js'),
-      "redux": path.resolve(__dirname, 'src/entries/redux.js'),
+      "app": path.resolve(__dirname, 'src/pages/containers/index.js'),
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'js/[name].js',
-      publicPath: "/", //quitar el public path
+      filename: 'ssr/[name].js',
+      publicPath: "/",
       chunkFilename: 'js/[id].[chunkhash].js',
+      libraryTarget: 'commonjs2',
     },
     devServer: {
       port: 9000,
     },
+    target: 'node',
     module: {
       rules: [
         {
