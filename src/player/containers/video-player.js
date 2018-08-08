@@ -70,6 +70,13 @@ class VideoPlayer extends Component {
     this.player = element
   }
   render() {
+    if (!this.props.videoExist) {
+      return (
+        <div>
+          <h2>No se ha encontrado el video</h2>
+        </div>
+      )
+    }
     return (
       <VideoPlayerLayout
         setRef={this.setRef}
@@ -116,7 +123,8 @@ class VideoPlayer extends Component {
 }
 function mapStateToProps(state, props){
   return {
-    media: state.get('data').get('entities').get('media').get(props.id)
+    media: state.get('data').get('entities').get('media').get(props.id),
+    videoExist: state.get('data').get('entities').get('media').has(props.id)
   }
 }
 

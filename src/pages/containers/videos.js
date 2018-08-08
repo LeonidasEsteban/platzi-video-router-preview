@@ -28,7 +28,15 @@ class Home extends Component {
     // })
     this.props.actions.closeModal()
   }
+  componentDidMount() {
+    const search = this.props.location.search;
+    if(search) {
+      const id = search.split('=')[1]
+      this.handleOpenModal(id);
+    }
+  }
   render() {
+    // console.log(this.props);
     return (
       <HandleError>
         <HomeLayout>
@@ -48,8 +56,6 @@ class Home extends Component {
                 <VideoPlayer
                   autoplay
                   id={this.props.modal.get('mediaId')}
-                  // src={this.state.media.src}
-                  // title={this.state.media.title}
                 />
               </Modal>
             </ModalContainer>

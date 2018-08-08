@@ -1,3 +1,5 @@
 node_modules
 platzi-video
 .DS_Store
+dist/*
+dist/ssr/app.js

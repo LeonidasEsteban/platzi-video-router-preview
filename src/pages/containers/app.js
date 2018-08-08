@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from '../../pages/components/header';
-import Home from './home';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Header from '../components/header';
+import Home from '../components/home';
 import Videos from './videos';
+import Video from './video';
+import NotFound from '../components/not-found';
 
 
 import { Provider } from 'react-redux';
@@ -25,18 +27,19 @@ const store = createStore(
 );
 
 
-
-
-class Index extends Component {
+class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <Fragment>
-          <Header />
+          <Header {...this.props} />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/videos" component={Videos} />
-            <Route path="/videos/:id" component={Videos} />
+            <Route path="/videos/:id" component={Video} />
+            <Redirect from="/v" to='/videos' />
+            <Redirect from="/v/:id" to="/videos/:id" />
+            <Route component={NotFound} />
           </Switch>
         </Fragment>
       </Provider>
@@ -44,4 +47,4 @@ class Index extends Component {
   }
 }
 
-export default Index;
+export default App;

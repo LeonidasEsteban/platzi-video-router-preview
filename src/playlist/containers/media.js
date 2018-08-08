@@ -13,8 +13,12 @@ class MediaContainer extends Component {
     return (
       <Link
         to={{
-          pathname: `/videos/${this.props.data.get('id')}`,
-          state: { modal: true },
+          pathname: `/videos`,
+          search: `?id=${this.props.data.get('id')}`,
+          // state: {
+          //   modal: true,
+          //   id: this.props.data.get('id')
+          // },
         }}
       >
         <Media openModal={this.openModal} {...this.props.data.toJS()} />

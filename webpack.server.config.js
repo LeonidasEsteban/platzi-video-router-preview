@@ -5,13 +5,13 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = (env) => {
   const plugins = [
-    new ExtractTextPlugin("css/[name].[hash].css")
+    new ExtractTextPlugin("css/[name].css")
   ]
 
   return {
 
     entry: {
-      "app": path.resolve(__dirname, 'src/pages/containers/index.js'),
+      "app": path.resolve(__dirname, 'src/pages/containers/app.js'),
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
